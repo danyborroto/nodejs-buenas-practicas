@@ -1,8 +1,8 @@
 const workoutServices = require("../services/workoutServices")
 
 const getAll = (req, res) => {
-    const allWorkout = workoutServices.allWorkout();
-    res.send("<h1>Get all workouts</h1>")
+    const allWorkout = workoutServices.getAll();
+    res.send({ status: "OK", data: allWorkout });
 };
 
 const getOne = (req, res) => {
