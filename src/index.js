@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const v1Router = require('./v1/routes/index');
+const v1WorkoutRouter = require('./v1/routes/workoutRoutes');
 
-app.use("/api/v1", v1Router);
+app.use("/api/v1/workout", v1WorkoutRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
