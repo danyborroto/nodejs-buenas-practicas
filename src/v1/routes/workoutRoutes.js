@@ -4,7 +4,7 @@ const { getAll, getOne, insertOne, updateOne, deleteOne } = require('../../contr
 
 router.get("/", getAll);
 router.get("/:workoutId", getOne);
-router.post("/:workoutId", insertOne);
+router.post("/", insertOne);
 router.patch("/:workoutId", updateOne);
 router.delete("/:workoutId", deleteOne);
 

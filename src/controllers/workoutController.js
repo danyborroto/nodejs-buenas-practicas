@@ -6,13 +6,32 @@ const getAll = (req, res) => {
 };
 
 const getOne = (req, res) => {
-    const oneWorkout = workoutServices.oneWorkout(req.params.workoutId);
-    res.send(`Get workout with id ${req.params.workoutId}`);
+    const oneWorkout = workoutServices.getOne(req.params.workoutId);
+    res.send({ status: "OK", data: oneWorkout });
 };
 
 const insertOne = (req, res) => {
-    const insertOne = workoutServices.insertOne(req.params.workoutId);
-    res.end(`Create workout ${req.params.workoutId}`);
+    const { body } = req;
+    if (
+        !body.name ||
+        !body.mode ||
+        !body.equipment ||
+        !body.exercises ||
+        !body.trainerTips
+    ) {
+        return;
+    }
+
+    const newWorkout = {
+        name: body.name,
+        mode: body.mode,
+        equipment: body.equipment,
+        exercises: body.exercises,
+        trainerTips: body.trainerTips,
+    };
+
+    const createWorkout = workoutServices.createWorkout(newWorkout);
+    res.status(201).send({ status: "OK", data: createWorkout });
 };
 
 const updateOne = (req, res) => {
